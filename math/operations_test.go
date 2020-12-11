@@ -11,13 +11,21 @@ type operationUnitSuite struct {
 	suite.Suite
 }
 
-func (unit *operationUnitSuite) Multiply() {
+func (unit *operationUnitSuite) TestComplexMultiply() {
 	unit.Run("Return multiplication", func() {
 		sut := math.NewOperations()
 
-		result := sut.Multiply(1, 1)
+		result := sut.ComplexMultiply(1, 1, 2)
 
 		require.NotEmpty(unit.T(), result)
+
+		require.Equal(unit.T(), 1, result)
+	})
+
+	unit.Run("Return zero when second term is equal to zero", func() {
+		sut := math.NewOperations()
+
+		require.Equal(unit.T(), 0, sut.ComplexMultiply(1, 0, 2))
 	})
 }
 
