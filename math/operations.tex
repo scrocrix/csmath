@@ -11,32 +11,70 @@
 
 \begin{document}
 
-\section{operations.Multiply}
+\section{operations.ComplexMultiply}
 
 Prove the correctness of method that multiply two natural numbers, for all integer constants $c \geq 2$.
 
 \begin{theorem}
-The algorithm recursively growing towards infinity.
+The algorithm grows at a $O(2^n)$ complexity.
 
-\begin{proof}
-In order to understand my reasoning behind it, we might want to represent the same algorithm mathematically, as such:
+\begin{lemma}
+The algorithm can be mathematically written as follows:
 
 \[
-    f(x,y) =
+    f(y,z) =
     \begin{cases}
-        0, \text{if } x = 0\\
-        f(c \times x, \frac{y}{c}) + x \bmod{c}, \text{otherwise}
+        0, \text{if } z = 0\\
+        f(c \times y, \frac{z}{c}) + y \times  z \bmod{c}, \text{otherwise}
     \end{cases}
 \]
 
 \begin{itemize}
-  \item So that, $x, y \geq 0$
-  \item And, $f(0, y) = 0 \mid y \in Z$
+  \item So that, $y, z \geq 0$
+  \item And, $f(y, 0) = 0 \mid y \in Z$
+  \item And, $c \geq 2$
 \end{itemize}
 
-In mathematics, we can say that when dividing a number by zero (e.g. $\frac{n}{0}$) results into a closer fraction next to 0 which leads the result towards infinity.
+\begin{proof}
+
+We can prove the formula by means of induction.
+
+Basis mode: $y = 1, z = 1, c = 2$
+\begin{align*}
+    f(1, 1) = f(2 \times 1, \frac{1}{2}) + 1 \times 1 \bmod{2} = f(2, \frac{1}{2})
+\end{align*}
+
+Now we have to find the result value of $f(2, \frac{1}{2})$. The machine will simplify $\frac{1}{2}$ into $0.5$ which is fraction of zero, so:
+\begin{align*}
+    f(2, 0.5) = 0 \text{, because } f(y, 0) = 0 \mid y \in Z
+\end{align*}
+
+Induction mode: $y = 10, z = 10, c = 2$
+
+\begin{align*}
+    f(10, 10) = f(2 \times 10, \frac{10}{2}) + 10 \times 10 \bmod{2} = f(20, 5) + 10 \times 10 \bmod{2}
+\end{align*}
+
+Now let's find what's the value of $f(20, 5)$
+\begin{align*}
+    f(20, 5) = f(2 \times 20, \frac{5}{2}) + 20 \times 5 \bmod{2} = f(40, \frac{5}{2}) + 20 \times 5 \bmod{2}
+\end{align*}
+
+Now let's find what's the value of $f(40, \frac{5}{2})$
+\begin{align*}
+    f(40, \frac{5}{2}) = f(2 \times 40, \frac{\frac{5}{2}}{2}) + 40 \times \frac{5}{2} \bmod{2} = f(80, \frac{5}{4}) + 50 \times \frac{5}{2} \bmod{2}
+\end{align*}
+
+Now let's find what's the value of $f(80, \frac{5}{4})$
+\begin{align*}
+    f(80, \frac{5}{4}) = f(2 \times 80, \frac{\frac{5}{4}}{2}) + 80 \times \frac{5}{4} \bmod{2} = f(160, \frac{5}{8}) + 80 \times \frac{5}{4} \bmod{2}
+\end{align*}
+
+Finally. I'll skip ahead and affirm that $f(160, \frac{5}{8}) = 0$.
 
 \end{proof}
+
+\end{lemma}
 
 \end{theorem}
 
