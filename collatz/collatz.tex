@@ -1,0 +1,21 @@
+\usepackage{algorithm2e}
+\usepackage{listings}
+
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+
+\begin{conjecture}
+
+Lothar Collatz was a German mathematician that proposed the following statement, where given a positive number $n$, $n : n >= 1$, then $f(n)$ should return a sequence which the last number is equals to $1$.
+\[
+    f(n) =
+    \begin{cases}
+        \frac{n}{2}, \text{if } n \bmod{2} = 0\\
+        3 \times n + 1, \text{otherwise}
+    \end{cases}
+\]
+\end{conjecture}
+
+\end{document}
