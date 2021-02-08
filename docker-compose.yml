@@ -3,7 +3,7 @@ services:
   app:
     image: golang
     tty: true
-    container_name: scrocrix-csmath
-    working_dir: /etc/local/scrocrix-csmath
+    container_name: scrocrix-formulas
+    working_dir: /etc/local/scrocrix-formulas
     volumes:
-      - ./:/etc/local/scrocrix-csmath
+      - ./:/etc/local/scrocrix-formulas
